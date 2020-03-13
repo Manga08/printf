@@ -10,8 +10,8 @@
 
 typedef struct types
 {
-	char *arr;
+	char *pointer;
         void(*f)(va_list data);
-} type;
+} cases;
 
 #endif
