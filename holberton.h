@@ -2,21 +2,21 @@
 #define HOLBERTON_FILE
 
 /**
- * struct op - Struct op
- *
- * @op: The operator
+ * struct types - Struct op
+ * @pointer: The pointer.
  * @f: The function associated
  */
 
 typedef struct types
 {
 	char *pointer;
-        void(*f)(va_list data);
+
+	void (*f)(va_list, char *, unsigned int *);
 } cases;
 
-void p_char (va_list c);
-void p_int(va_list i);
-void p_float(va_list f);
-void p_str(va_list s);
+int printf(const char *format, ...);
+void p_char (va_list data, char *buffer, unsigned int *size);
+void p_int(va_list data, char *buffer, unsigned int *size);
+
 
 #endif
