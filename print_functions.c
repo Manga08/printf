@@ -24,6 +24,7 @@ void p_int (va_list data, char *buffer, unsigned int *size)
 		sizes--;
 	}
 	*size += tmps;
+}
 /**
  * p_char - characters
  * @data: type data
@@ -34,13 +35,4 @@ void p_char (va_list data, char *buffer, unsigned int *size)
 {
 	buffer[*size] = va_arg(data, int);
 	*size += 1;
-}
-
-/**
- * p_str - strings
- * @s: type data
- */
-void p_str(va_list s)
-{
-
 }

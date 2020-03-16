@@ -12,8 +12,6 @@ int _printf(const char *format, ...)
 	unsigned int *size;
 	cases porcentage[] = {
 		{"c", p_char},
-		/*{"s", p_str},*/
-		/*{"d", p_decimal},*/
 		{"i", p_int},
 		{NULL, NULL}
 	};
