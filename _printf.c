@@ -1,19 +1,49 @@
 #include "holberton.h"
 /**
- * _printf - Entry point
- * @format: the format
+ * _printf - The printf main function
+ * @format: the recieve format
+ *Return: the size
  */
-void _printf(const format, ...)
+int _printf(const char *format, ...)
 {
-	char *coma = "";
+	char *buffer = malloc(2048);
 	va_list data;
-	unsigned int c1 = 0, c2 = 0;
-
-	pr_t ops[] = {
+	unsigned int cf = 0, ca = 0;
+	unsigned int *size;
+	cases porcentage[] = {
 		{"c", p_char},
+		/*{"s", p_str},*/
+		/*{"d", p_decimal},*/
 		{"i", p_int},
-		{"f", p_float},
-		{"s", p_str},
 		{NULL, NULL}
 	};
+	va_start(data, format);
+	size = malloc(sizeof(int));
+	*size = 0;
+	if (format == NULL)
+		return (1);
+	while (format[cf])
+	{
+		if (format[cf] == '%')
+		{
+			cf++;
+			ca = 0;
+			while (ca < 2)
+			{
+				if (format[cf] == porcentage[ca].pointer[0])
+					porcentage[ca].f(data, buffer, size);
+				ca++;
+			}
+		}
+		else
+		{
+			buffer[*size] = format[cf];
+			*size += 1;
+		}
+		cf++;
+	}
+	write(1, buffer, *size);
+	free(buffer);
+	free(size);
+	return (*size);
 }
