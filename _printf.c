@@ -12,12 +12,13 @@ int _printf(const char *format, ...)
 	cases porcentage[] = {
 		{'c', p_char},
 		{'i', p_int},
+		{'s', p_str},
+		{'d', p_dec},
+		{'%', p_por},
 		{0, NULL}
 	};
 	size = &m;
 	va_start(data, format);
-	if (format == NULL)
-		return (1);
 	while (format[cf])
 	{
 		if (format[cf] == '%')
@@ -29,7 +30,6 @@ int _printf(const char *format, ...)
 				if (format[cf] == porcentage[ca].pointer)
 				{
 					porcentage[ca].f(data, buffer, size);
-					break;
 				}
 				ca++;
 			}

@@ -20,7 +20,10 @@ typedef struct types
 } cases;
 
 int _printf(const char *format, ...);
-void p_char (va_list data, char *buffer, unsigned int *size);
+void p_char(va_list data, char *buffer, unsigned int *size);
 void p_int(va_list data, char *buffer, unsigned int *size);
+void p_str(va_list data, char *buffer, unsigned int *size);
+void p_dec(va_list data, char *buffer, unsigned int *size);
+void p_por(va_list data, char *buffer, unsigned int *size);
 
 #endif
