@@ -26,16 +26,16 @@ void p_int (va_list data, char *buffer, unsigned int *size)
 	*size += tmps;
 /**
  * p_char - characters
- * @c: type data
+ * @data: type data
+ * @buffer: pointer buffer.
+ * @size: lenght.
  */
-void p_char (va_list c)
+void p_char (va_list data, char *buffer, unsigned int *size)
 {
-
+	buffer[*size] = va_arg(data, int);
+	*size += 1;
 }
-void p_float (va_list f)
-{
 
-}
 /**
  * p_str - strings
  * @s: type data
