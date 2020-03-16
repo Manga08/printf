@@ -14,7 +14,7 @@
 
 typedef struct types
 {
-	char *pointer;
+	char pointer;
 
 	void (*f)(va_list, char *, unsigned int *);
 } cases;

@@ -8,16 +8,14 @@ int _printf(const char *format, ...)
 {
 	char *buffer = malloc(2048);
 	va_list data;
-	unsigned int cf = 0, ca = 0;
-	unsigned int *size;
+	unsigned int cf = 0, ca = 0, m = 0, *size = 0;
 	cases porcentage[] = {
-		{"c", p_char},
-		{"i", p_int},
-		{NULL, NULL}
+		{'c', p_char},
+		{'i', p_int},
+		{0, NULL}
 	};
+	size = &m;
 	va_start(data, format);
-	size = malloc(sizeof(int));
-	*size = 0;
 	if (format == NULL)
 		return (1);
 	while (format[cf])
@@ -26,10 +24,13 @@ int _printf(const char *format, ...)
 		{
 			cf++;
 			ca = 0;
-			while (ca < 2)
+			while (porcentage[ca].pointer)
 			{
-				if (format[cf] == porcentage[ca].pointer[0])
+				if (format[cf] == porcentage[ca].pointer)
+				{
 					porcentage[ca].f(data, buffer, size);
+					break;
+				}
 				ca++;
 			}
 		}
@@ -41,7 +42,7 @@ int _printf(const char *format, ...)
 		cf++;
 	}
 	write(1, buffer, *size);
+	va_end(data);
 	free(buffer);
-	free(size);
 	return (*size);
 }

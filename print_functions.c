@@ -7,23 +7,22 @@
  */
 void p_int (va_list data, char *buffer, unsigned int *size)
 {
-	int i = va_arg(data, int), n, sizes = 0, tmps = 0;
+	int m = va_arg(data, int), i = 0, n = m, tmp;
 
-	n = 1;
-	while (n / 10 > 0)
+	while ((n / 10) > 0)
 	{
-		n /= 10;
-		sizes++;
+		i++;
+		n = (n / 10);
 	}
-	sizes++;
-	tmps = sizes;
-	while (sizes > 0)
+	i++;
+	tmp = i;
+	while (i > 0)
 	{
-		buffer[*size + sizes - 1] = (i % 10) + 48;
-		i /= 10;
-		sizes--;
+		buffer[*size + i - 1] = (m % 10) + '0';
+		i--;
+		m = (m / 10);
 	}
-	*size += tmps;
+	*size += tmp;
 }
 /**
  * p_char - characters
