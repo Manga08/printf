@@ -9,7 +9,14 @@ void p_int(va_list data, char *buffer, unsigned int *size)
 {
 	int m = va_arg(data, int), i = 0, n = m, tmp;
 
-	while ((n / 10) > 0)
+	if (m < 0)
+	{
+		m *= -1;
+		buffer[*size]= '-';
+		*size += 1;
+	}
+
+	while (n / 10)
 	{
 		i++;
 		n = (n / 10);

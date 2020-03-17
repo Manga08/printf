@@ -10,15 +10,14 @@ int _printf(const char *format, ...)
 	va_list data;
 	unsigned int cf = 0, ca = 0, m = 0, *size = 0;
 	cases porcentage[] = {
-		{'c', p_char},
-		{'i', p_int},
-		{'s', p_str},
-		{'d', p_dec},
-		{'%', p_por},
+		{'c', p_char},{'i', p_int},{'s', p_str},{'d', p_int},
+		{'%', p_por},{'u', p_int},{'o', p_int},{'x', p_int},
 		{0, NULL}
 	};
 	size = &m;
 	va_start(data, format);
+	if (format == NULL)
+		return (-1);
 	while (format[cf])
 	{
 		if (format[cf] == '%')
