@@ -15,9 +15,9 @@ int _printf(const char *format, ...)
 		{0, NULL}
 	};
 	size = &m;
-	va_start(data, format);
-	if (format == NULL)
+	if (!buffer || !format || (format[0] == '%' && format[1] == '\0'))
 		return (-1);
+	va_start(data, format);
 	while (format[cf])
 	{
 		if (format[cf] == '%')
