@@ -1,0 +1,19 @@
+.TH man 2 "17 Mar 2020" "0.32" "_printf function man page"
+.SH NAME
+.B _printf
+\- format and print the standard output.
+.SH SYNOPSIS
+#include "holberton.h"
+.B _printf
+.I FORMAT [ARGUMENTS]...
+.SH DESCRIPTION
+_printf function accepts a variable number of ARGUMENTS and that it prints on the standard output according to FORMAT, which is requested.
+.SH OPTIONS
+.B OPTIONS
+%% single %
+.SH SEE ALSO
+.I printf(1), printf(3), sprintf(), snprintf(), vsprintf(), vsnprintf().
+.SH BUGS
+If you find any bug please contact to 1463@holbertonschool.com or 1454@holbertonschool.com 
+.SH AUTHOR
+Manuel Acero Acero and Sergio Esteban Diaz as a project for the Holberton School Cohort 11.
