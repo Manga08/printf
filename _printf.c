@@ -2,7 +2,7 @@
 /**
  * _printf - The printf main function
  * @format: the recieve format
- *Return: the size
+ * Return: the size
  */
 int _printf(const char *format, ...)
 {
@@ -17,20 +17,18 @@ int _printf(const char *format, ...)
 	if (!buffer || !format || (format[0] == '%' && format[1] == '\0'))
 		return (-1);
 	va_start(data, format);
-	while (format[cf])
+	for (; format[cf]; cf++)
 	{
 		if (format[cf] == '%')
 		{
 			cf++;
-			ca = 0;
-			while (porcentage[ca].pointer)
+			for (ca = 0; porcentage[ca].pointer; ca++)
 			{
 				if (format[cf] == porcentage[ca].pointer)
 				{
 					porcentage[ca].f(data, buffer, size);
 					break;
 				}
-				ca++;
 			}
 			if (format[cf] != porcentage[ca].pointer)
 			{
@@ -45,11 +43,7 @@ int _printf(const char *format, ...)
 			buffer[*size] = format[cf];
 			*size += 1;
 		}
-		cf++;
 	}
-	buffer[*size] = '\0';
 	write(1, buffer, *size);
-	va_end(data);
-	free(buffer);
-	return (*size);
+	return (va_end(data), free(buffer), *size);
 }
