@@ -28,8 +28,16 @@ int _printf(const char *format, ...)
 				if (format[cf] == porcentage[ca].pointer)
 				{
 					porcentage[ca].f(data, buffer, size);
+					break;
 				}
 				ca++;
+			}
+			if (format[cf] != porcentage[ca].pointer)
+			{
+				buffer[*size] = format[cf - 1];
+				*size += 1;
+				buffer[*size] = format[cf];
+				*size += 1;
 			}
 		}
 		else
